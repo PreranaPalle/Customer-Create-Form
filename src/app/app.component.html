@@ -1,0 +1,15 @@
+<!-- <ng-container *ngIf="create==false">
+<button class="btn btn-primary " (click)="oncreate()" routerLink="/info">Create a customer</button>
+</ng-container> -->
+<!-- <ng-container *ngIf="create==true"> -->
+  <h2>Customer Creation Form</h2>
+<div class="nav nav-tabs d-flex">
+  <a class="w-60 nav-item nav-link" routerLink="/info" style="flex: 1">Info</a>
+  <a class="w-60 nav-item nav-link" routerLink="/address" style="flex: 1">Address</a>
+  <a class="w-60 nav-item nav-link" routerLink="/notes" style="flex: 1">Notes</a>
+  <a class="w-60 nav-item nav-link" routerLink="/account" style="flex: 1">Payment Details</a> 
+  <a class="w-60 nav-item nav-link" routerLink="/submit" style="flex: 1">Customer Details</a> 
+</div>
+<!-- </ng-container> -->
+<router-outlet></router-outlet>
+

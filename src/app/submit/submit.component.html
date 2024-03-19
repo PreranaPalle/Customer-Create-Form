@@ -1,0 +1,24 @@
+<div class="row justify-content-center my-5">
+    <div class="col-4">
+        <h4>Info:</h4>
+        <li *ngFor="let pair of infoMap|keyvalue">
+            {{ pair.key }}=>{{ pair.value }}
+        </li>
+        <h4>Notes:</h4>
+        <li *ngFor="let pair of demoMap|keyvalue">
+            {{ pair.key}}=>{{pair.value}}
+        </li>
+        <h4>Address:</h4>
+        <div *ngFor="let pair of values;let i= index">
+            <h6>Address-{{i}}</h6>
+            <li *ngFor="let valueAdd of pair|keyvalue">
+                {{valueAdd.key}}=>{{valueAdd.value}}
+            </li>
+        </div>
+        <h4>Account Details:</h4>
+        <li *ngFor="let pair of accountMap|keyvalue">
+            {{pair.key}}=>{{pair.value}}
+        </li>
+
+    </div>
+</div>

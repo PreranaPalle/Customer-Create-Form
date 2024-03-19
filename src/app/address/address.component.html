@@ -1,0 +1,81 @@
+<div>
+    <div class="row justify-content-center my-5">
+        <div class="col-4">
+            <h3>Address</h3>
+            <form class="form-group" [formGroup]="addressForm">
+
+                <div formArrayName="addressArray">
+                    <div *ngFor="let address of addressArray?.controls; let i = index" [formGroupName]="i">
+                        <h3>Address - {{i + 1}}</h3>
+                        <div class="form-group">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="inputAddress" formControlName="address">
+                        </div>
+
+
+                        <div>
+                            <label>City:</label>
+                            <input type="text" class="form-control" formControlName="city" />
+                        </div>
+                        <div>
+                            <label>State:</label>
+                            <input type="text" class="form-control" formControlName="state" />
+                        </div>
+                        <div>
+                            <label>Country:</label>
+                            <input type="text" class="form-control" formControlName="country" />
+                        </div>
+                        <div>
+                            <label>Pincode:</label>
+                            <input type="text" class="form-control" formControlName="pincode" [class.is-invalid]="addressForm?.get('addressArray')?.get('pincode')?.invalid && addressForm?.get('addressArray')?.get('pincode')?.touched"/>
+                            <small class="text-danger" *ngIf=" (addressForm?.get('addressArray')?.get('pincode')?.valid || addressForm?.get('addressArray')?.get('pincode')?.touched)">
+                                Pincode is required.
+                            </small> 
+                        </div>
+
+                        <div>
+                            <label>Contact Phone Number:</label>
+                            <input type="text" class="form-control" formControlName="contactPhone" />
+                        </div>
+                    </div>
+                </div>
+                <button (click)="onadd();" class="btn btn-secondary">Add another address</button>
+                <button (click)="onSave()" data-toggle="modal" data-target="#exampleModal"
+                    class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+    <ng-container *ngIf="save==true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Do you want to submit the addresses?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <div *ngFor="let address of addressForm.value.addressArray; let i=index">
+                                <h6>Address-{{i+1}}</h6>
+                                <ul>
+                                    <li *ngFor="let item of getObjectKeys(address)">
+                                        {{ item.key }}: {{ item.value }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </ul>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                            routerLink="/notes">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,26 @@
+<div>
+    <div class="row justify-content-center my-5">
+        <div class="col-4">
+            <h3>Notes:</h3>
+            <form [formGroup]="notesForm">
+                <div class="form-group">
+                    <h5>Notes for supplier:</h5>
+                    <textarea class="form-control" formControlName="supplier"></textarea>
+                </div>
+                <div class="form-group">
+                    <h5>Notes During Delivery:</h5>
+                    <div>Best time for delivery:</div>
+                    <select class="form-control" formControlName="time">
+                        <option selected>Select timezone:</option>
+                        <option *ngFor="let time of timezone">{{time}}</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Any other instructions?</label>
+                    <textarea class="form-control" formControlName="other"></textarea>
+                </div>
+                <button class="btn btn-primary" (click)="onNext()" routerLink="/account">Next</button>
+            </form>
+        </div>
+    </div>
+</div>
